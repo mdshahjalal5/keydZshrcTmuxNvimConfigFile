@@ -1,0 +1,56 @@
+[ids]
+*
+
+[main]
+shift = oneshot(shift)
+meta = oneshot(meta)
+control = oneshot(control)
+
+leftalt = oneshot(alt)
+rightalt = oneshot(altgr)
+n = enter
+enter = .
+. = n
+capslock = overload(control, esc)
+#a = overload(control, a)
+insert = S-insert
+a = overload(control, a)
+s = overload(meta, s)
+
+capslock = overload(capslock, esc)
+
+[capslock:C]
+h = left
+j = down
+k = up
+l = right
+
+# Activates when both capslock and shift is pressed
+[capslock+shift]
+h = C-left
+j = C-down
+k = C-up
+l = C-right
+
+# capslock = overload(ctrl_vim, esc)
+#
+# # ctrl_vim modifier layer; inherits from 'Ctrl' modifier layer
+#
+# [ctrl_vim:C]
+#
+# space = swap(vim_mode)
+#
+# # vim_mode modifier layer; also inherits from 'Ctrl' modifier layer
+#
+# [vim_mode:C]
+# h = left
+# j = down
+# k = up
+# l = right
+# # forward word
+# w = C-right
+# # backward word
+# b = C-left
+#
+#
+
