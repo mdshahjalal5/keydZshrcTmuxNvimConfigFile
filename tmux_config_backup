@@ -2,12 +2,16 @@
 set -g default-terminal "screen-256color"
 #Change Default TMUX Prefix to “Ctrl-a”
 
-set -g prefix C-s
+# set -g prefix C-Space
+ # set -g prefix C-s
+ set -g prefix '`' 
+ # set -g prefix 'F4' 
 unbind C-b
 bind-key C-s send-prefix
 # clear screen prefix c-l 
 bind-key C-l send-keys c-l  
-
+ bind-key & kill-window
+ bind-key x kill-pane
 #Change keybinds for splitting windows
 unbind %
 bind | split-window -h
@@ -51,6 +55,18 @@ set -g @themepack 'powerline/default/cyan' # use this theme for tmux
 set -g @resurrect-capture-pane-contents 'on' # allow tmux-ressurect to capture pane contents
 set -g @continuum-restore 'on' # enable tmux-continuum functionality
 set -g @plugin 'Morantron/tmux-fingers'
-set -g @plugin 'tmux-plugins/tmux-sidebar'
+# set -g @plugin 'tmux-plugins/tmux-sidebar'
+set -g @plugin 'alexwforsythe/tmux-which-key' # best alternative tmux menus #prefix space for starting 
+set -g @plugin 'laktak/extrakto'  # prefix tab for start 
+# set -g @plugin '2kabhishek/tmux-tea'   #need to check seems important 
+# set -g @plugin '2kabhishek/tmux2k'  this is good I should read later then customize 
+set -g @plugin 'tmux-plugins/tmux-copycat'
+#copycat shortcuts 
+# prefix + ctrl-f - simple file search
+# prefix + ctrl-g - jumping over git status files (best used after git status command)
+# prefix + alt-h - jumping over SHA-1/SHA-256 hashes (best used after git log command)
+# prefix + ctrl-u - url search (http, ftp and git urls)
+# prefix + ctrl-d - number search (mnemonic d, as digit)
+# prefix + alt-i - ip address search
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'

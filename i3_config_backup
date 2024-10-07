@@ -1,9 +1,8 @@
-# It will not be overwritten, so edit it as you like.
+
 #
 # Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
+# this file and re-run i4-config-wizard(1).
 #
-
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -18,6 +17,7 @@ workspace_layout tabbed
 # Define the "exit" mode with custom keybindings
 mode "exit" {
     bindsym l exec "/usr/local/bin/i3-restore/i3-save && i3-msg 'exit'"
+
     bindsym r exec "/usr/local/bin/i3-restore/i3-save && sudo systemctl reboot"
     bindsym h exec systemctl hibernate
     bindsym s exec systemctl suspend
@@ -26,26 +26,28 @@ mode "exit" {
     bindsym Return exec i3-msg exit
     bindsym Escape mode "default"
 }
-
-    bindsym $mod+y exec systemctl suspend
-bindsym $mod+x exec --no-startup-id systemctl poweroff
-bindsym $mod+t exec --no-startup-id systemctl reboot
+    
+bindsym $mod+y exec systemctl suspend
+bindsym $mod+t exec --no-startup-id systemctl poweroff
+bindsym $mod+x exec --no-startup-id systemctl reboot
 # Automatically restore the session on startup
 exec /usr/local/bin/i3-restore/i3-restore
 
+bindsym --whole-window $mod+grave exec --no-startup-id xdotool key semicolon
+bindsym --whole-window $mod+semicolon exec --no-startup-id xdotool key grave
 #bindsym $mod+q mode "exit"
 
 bindsym $mod+Shift+x mode "exit"
 # Start Alacritty terminal
  exec --no-startup-id alacritty
-
 # Start Google Chrome
  exec --no-startup-id google-chrome    
 # Start copyq
-#exec --no-startup-id copyq
+exec --no-startup-id copyq
 
+# bindsym $mod+v exec --no-startup-id evince  
 # Start autokey 
-#exec --no-startup-id autokey-gtk 
+exec --no-startup-id autokey-gtk 
 
 # Start Terminator with a specific layout
 #exec --no-startup-id terminator 
@@ -153,7 +155,10 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
+# Custom bindings
+bindsym $mod+q split v
+bindsym $mod+g split h
+# bindsym $mod+h split h
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -232,6 +237,7 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+bindsym $mod1+h resize shrink width 10 px or 10 ppt
 bindsym $mod+Shift+r mode "resize"
 
 # Toggle CopyQ

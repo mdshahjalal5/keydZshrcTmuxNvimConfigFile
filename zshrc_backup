@@ -128,10 +128,12 @@ alias s="systemctl suspend"
 alias p="pwd" 
 alias e='exec zsh'
 alias cc="code "
+
 alias t="tmux attach || tmux new"
 alias tt="nvim /home/sj/.tmux.conf"
 alias a="exit"
 alias u="/mnt/fed/web2"
+
 alias w="/mnt/fed2/web2"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias ,='nvim .'
@@ -139,10 +141,17 @@ alias c="/home/sj/.config/nvim"
 alias k='NVIM_APPNAME="nvim-kickstart" nvim'
 alias i='nocorrect sudo dnf install '
 alias r='nocorrect sudo dnf remove '
-alias p='systemctl --user restart pipewire && systemctl --user restart pipewire-pulse'
+alias p='systemctl --user restart pipewire && systemctl --user restart pipewire-pulse && systemctl --user daemon-reload'
 alias gi="git add . && git commit -m 'done' && git push -u origin main"
-# custom function for customization 
+alias d='nmcli device disconnect enp1s0'
+alias de='nmcli device connect enp1s0'
+alias tl='tmux ls'
+alias tn='tmux new -s '
+alias ta='tmux attach -t '
+alias tk='tmux kill-session -t '
 
+# custom function for customization 
+#enter will run the last used command 
 last_if_empty() {
   if [[ -z "$BUFFER" ]]; then
     zle up-history
@@ -169,8 +178,8 @@ export PATH="/opt/nvim/bin:$PATH"
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 bindkey -v
 # Bind ';' key to accept the autosuggestion
-bindkey ';' autosuggest-accept
-
+# bindkey ';' autosuggest-accept
+bindkey "'" autosuggest-accept
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

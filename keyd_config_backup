@@ -4,18 +4,23 @@
 [main]
 shift = oneshot(shift)
 meta = oneshot(meta)
-control = oneshot(control)
+#control = oneshot(control)
+leftalt = leftalt
 
 leftalt = oneshot(alt)
 rightalt = oneshot(altgr)
 n = enter
 enter = .
 . = n
-capslock = overload(control, esc)
-#a = overload(control, a)
+esc = capslock
 insert = S-insert
 a = overload(control, a)
+l = overload(shift, l)
+leftshift = overload(shift, backspace)
+#control = overload(control, f6)
+; = overload(control, ;)
 s = overload(meta, s)
+
 
 capslock = overload(capslock, esc)
 
@@ -24,14 +29,21 @@ h = left
 j = down
 k = up
 l = right
-
+i = C-S-v
 # Activates when both capslock and shift is pressed
 [capslock+shift]
 h = C-left
 j = C-down
 k = C-up
 l = C-right
+y = macro(H e l l o space W o r l d enter)
+		
+#rightcontrol = layer(control )  # Capslock key toggles the control layer on/off
+#control = swap(any )  # Capslock key toggles the control layer on/off
 
+#[any]
+#1 = l
+#2 = ttt
 # capslock = overload(ctrl_vim, esc)
 #
 # # ctrl_vim modifier layer; inherits from 'Ctrl' modifier layer
